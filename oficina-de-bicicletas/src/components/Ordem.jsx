@@ -14,7 +14,11 @@ function Ordem() {
 
     const adicionarNaTela = (e) => {
         e.preventDefault();
-
+         if (!dsCliente.trim() || !dsServico.trim() || !nuValor) {
+                alert("Preencha todos os campos!");
+                    return;
+                    }
+         
         if (idEmEdicao !== null) {
             const novoServico = ordemList.map((pedido) =>
                 pedido.idOrdem === idEmEdicao
@@ -27,9 +31,9 @@ function Ordem() {
         } else {
             const novoServico = {
                 idOrdem: crypto.randomUUID(),
-                dsCliente: dsCliente || "Novo Cliente",
-                dsServico: dsServico || "Novo Serviço",
-                nuValor: nuValor || "Preço desejado",
+                dsCliente: dsCliente,
+                dsServico: dsServico,
+                nuValor: nuValor,
                 fgConcluida: false
             };
 
